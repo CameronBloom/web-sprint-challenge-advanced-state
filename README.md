@@ -4,19 +4,19 @@ In this challenge, you will write the logic for [THIS APP](https://advanced-stat
 
 ## Tools
 
-- Node 16.x
-- NPM 8.x (update NPM executing `npm i -g npm`)
-- Unix-like shell (Gitbash/bash/zsh)
-- Chrome >= 98.x
+- [x] Node 16.x
+- [x] NPM 8.x (update NPM executing `npm i -g npm`)
+- [x] Unix-like shell (Gitbash/bash/zsh)
+- [x] Chrome >= 98.x
 
 ❗ Other configurations might work but haven't been tested.
 
 ## Project Setup
 
-- Fork, clone, and `npm install`. You won't need to add any extra libraries.
-- Launch the project in a development server executing `npm run dev`.
-- Visit your app by navigating Chrome to `http://localhost:3000`.
-- Run tests locally executing `npm test`. The local test file is `codegrade_mvp.test.js`.
+- [x] Fork, clone, and `npm install`. You won't need to add any extra libraries.
+- [ ] Launch the project in a development server executing `npm run dev`.
+- [ ] Visit your app by navigating Chrome to `http://localhost:3000`.
+- [ ] Run tests locally executing `npm test`. The local test file is `codegrade_mvp.test.js`.
 
 ## Studying the prototype
 
