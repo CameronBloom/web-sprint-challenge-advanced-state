@@ -22,23 +22,23 @@ In this challenge, you will write the logic for [THIS APP](https://advanced-stat
 
 Open the live prototype linked above and study its functionality using the following **Chrome Dev Tools**:
 
-- **Elements tab** shows the exact DOM rendered as we interact with the UI. Look at texts but also at class names.
-- **Network tab** shows the HTTP messages. "Payload" shows the request payload from the client (if any) and "Preview" shows the response payload from the server.
-- **Redux Extension tab** shows application state, as well as the actions that fire on user interaction. These actions commonly carry payloads but not always.
+- [x] **Elements tab** shows the exact DOM rendered as we interact with the UI. Look at texts but also at class names.
+- [x] **Network tab** shows the HTTP messages. "Payload" shows the request payload from the client (if any) and "Preview" shows the response payload from the server.
+- [x] **Redux Extension tab** shows application state, as well as the actions that fire on user interaction. These actions commonly carry payloads but not always.
 
 ### Important notes from "Product"
 
-- The routes **don't lose their state** by navigating the links back and forth:
+- [x] The routes **don't lose their state** by navigating the links back and forth:
   - Current position of the "B" in the wheel is maintained.
   - Current quiz question stays loaded.
   - Values inside the form are kept.
-- The endpoint to fetch the next quiz is rather slow, and a "Loading next quiz" shows instead of the quiz **while it arrives**.
-- A next quiz is only requested if there is **no quiz already in app state**, or by submitting an answer.
-- The "Submit answer" button in the quiz stays disabled until **an answer is selected**.
-- Once an answer is selected, the only way to unselect it is by **selecting the other answer**.
-- The "Submit new quiz" button in the form stays disabled until **all** inputs have values such that `value.trim().length > 0`.
-- Submitting a new quiz successfully **adds it to the roster** of questions that cycle through the quiz screen.
-- The structure of the HTML (hierarchy, ids, class names, texts on buttons etc) must match those of the prototype exactly.
+- [x] The endpoint to fetch the next quiz is rather slow, and a "Loading next quiz" shows instead of the quiz **while it arrives**.
+- [x]  A next quiz is only requested if there is **no quiz already in app state**, or by submitting an answer.
+- [x] The "Submit answer" button in the quiz stays disabled until **an answer is selected**.
+- [x] Once an answer is selected, the only way to unselect it is by **selecting the other answer**.
+- [x] The "Submit new quiz" button in the form stays disabled until **all** inputs have values such that `value.trim().length > 0`.
+- [x] Submitting a new quiz successfully **adds it to the roster** of questions that cycle through the quiz screen.
+- [x] The structure of the HTML (hierarchy, ids, class names, texts on buttons etc) must match those of the prototype exactly.
 
 ## Studying the API
 
