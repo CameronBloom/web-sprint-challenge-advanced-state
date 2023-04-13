@@ -21,8 +21,8 @@ export function moveCounterClockwise(nextPosition) {
 }
 
 export function selectAnswer(answer) { 
-  console.log(`action: select_answer triggered...`);
-  console.log(`action: answer index is ${answer}`);
+  // console.log(`action: select_answer triggered...`);
+  // console.log(`action: answer index is ${answer}`);
   return {
     type: SET_SELECTED_ANSWER,
     payload: answer
@@ -30,8 +30,8 @@ export function selectAnswer(answer) {
 }
 
 export function setMessage(message) { 
-  console.log(`action: set_message triggered...`);
-  console.log(`action: new message is ${message}`);
+  // console.log(`action: set_message triggered...`);
+  // console.log(`action: new message is ${message}`);
   return {
     type: SET_INFO_MESSAGE, 
     payload: message
@@ -39,8 +39,8 @@ export function setMessage(message) {
 }
 
 export function setQuiz(quiz) { 
-  console.log(`action: set_quiz triggered...`);
-  console.log(`action: new quiz is...`);
+  // console.log(`action: set_quiz triggered...`);
+  // console.log(`action: new quiz is...`);
   return {
     type: SET_QUIZ_INTO_STATE,
     payload: quiz
@@ -57,20 +57,30 @@ export function fetchQuiz() {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
     // On successful GET:
     // - Dispatch an action to send the obtained quiz to its state
-    dispatch(setQuiz(null));
-    dispatch(setMessage("Fetching Quiz"))
+    
     axios.get('http://localhost:9000/api/quiz/next')
       .then(res => dispatch(setQuiz(res.data)))
-      .then(() => dispatch(setMessage("Fetching Complete")))
+  
   }
 }
 
-export function postAnswer() {
+export function postAnswer(quiz, answer) {
   return function (dispatch) {
     // On successful POST:
     // - Dispatch an action to reset the selected answer state
     // - Dispatch an action to set the server message to state
     // - Dispatch the fetching of the next quiz
+
+    // console.log(`quiz was passed!!! - ${quiz}`)
+    // console.log(`answer was passed!!! - ${answer}`)
+    // console.log({ "quiz_id": quiz, "answer_id": answer })
+    
+    dispatch(selectAnswer(null))
+    axios.post("http://localhost:9000/api/quiz/answer", { "quiz_id": quiz, "answer_id": answer })
+      .then(res => dispatch(setMessage(res.data.message)))
+    dispatch(setQuiz(null))
+    dispatch(fetchQuiz())
+
   }
 }
 

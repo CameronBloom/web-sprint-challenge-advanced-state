@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 
 // TODO:
 // =====
-// INITIAL QUIZ RENDERING
-// POST ANSWER
+// INITIAL QUIZ RENDERING => SEEMS COMPLETE...
+// POST ANSWER...
+// CLEAN UP COMMENTS => SEEMS COMPLETE...
 
 
 // import the required actions
@@ -21,17 +22,21 @@ const mapStateToProps = state => {
 }
 
 function Quiz(props) {
-  console.log(` === Quiz Props === `)
-  console.log(props)
+  // console.log(` === Quiz Props === `)
+  // console.log(props)
 
   useEffect(() => {
     props.fetchQuiz();
   }, []);
 
-  const handleFetchQuiz = e => {
-    e.preventDefault();
-    props.fetchQuiz();
-  };
+  const handlePostAnswer = () => {
+    console.log(`quiz id: ${props.quiz.quiz_id}`);
+    console.log(`answer id: ${props.quiz.answers[props.selectedAnswer]["answer_id"]}`);
+    console.log(`answer text: ${props.quiz.answers[props.selectedAnswer]["text"]}`);
+    const quizId = props.quiz.quiz_id;
+    const answerId = props.quiz.answers[props.selectedAnswer]["answer_id"];
+    props.postAnswer(quizId, answerId);
+  }
   
   const handleSelectAnswer = (index) => {
     props.selectAnswer(index);
@@ -60,12 +65,14 @@ function Quiz(props) {
                 )
               })}
             </div>
-
-            <button id="submitAnswerBtn">Submit answer</button>
+            <button 
+              id="submitAnswerBtn" 
+              disabled={ props.selectedAnswer !== 0 && !props.selectedAnswer }
+              onClick={ () => handlePostAnswer() }
+            >Submit answer</button>
           </>
         ) : 'Loading next quiz...'
       }
-      <button onClick={ handleFetchQuiz } >fetch test...</button>
     </div>
   )
 }

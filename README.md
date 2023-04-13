@@ -66,7 +66,7 @@ In order to complete this project, you must fix the following modules:
 - [ ] [action-creators.js](frontend/state/action-creators.js)
 - [x] [Message.js](frontend/components/Message.js)
 - [x] [Wheel.js](frontend/components/Wheel.js)
-- [ ] [Quiz.js](frontend/components/Quiz.js)
+- [x] [Quiz.js](frontend/components/Quiz.js)
 - [ ] [Form.js](frontend/components/Form.js)
 
 ### Notes
