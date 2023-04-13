@@ -7,14 +7,13 @@ function wheel(state = initialWheelState, action) {
   // return updates
   switch(action.type) {
     case MOVE_CLOCKWISE:
-      console.log(`reducer: move_clockwise triggered...`)
-      console.log(`reducer: new value is ${action.payload}`);
+      // console.log(`reducer: move_clockwise triggered...`);
+      // console.log(`reducer: new value is ${action.payload}`);
       return action.payload
     case MOVE_COUNTERCLOCKWISE:
-      console.log(`move_counter_clockwise triggered...`)
-      return {
-        ...state
-      }
+      // console.log(`reducer: move_counter_clockwise triggered...`);
+      // console.log(`reducer: new value is ${action.payload}`);
+      return action.payload
     default:
       return state;
   }
