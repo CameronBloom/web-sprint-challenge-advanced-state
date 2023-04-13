@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 // import the required actions
 import { moveClockwise, moveCounterClockwise } from '../state/action-creators'
 
 // key for state should be "wheel"
-
 const mapStateToProps = state => {
   return {
     wheel: state.wheel
@@ -13,7 +12,7 @@ const mapStateToProps = state => {
 }
 
 function Wheel(props) {
-  console.log(` === Props === `)
+  console.log(` === Wheel Props === `)
   console.log(props);
 
   const handleClockwise = e => {
