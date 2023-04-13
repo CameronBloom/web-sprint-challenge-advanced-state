@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { selectAnswer, setQuiz, setMessage } from '../state/action-creators' // synchronous
 import { fetchQuiz, postAnswer } from '../state/action-creators' // asynchronous
 
-// key for state should be "wheel"
 const mapStateToProps = state => {
   return {
     quiz: state.quiz,

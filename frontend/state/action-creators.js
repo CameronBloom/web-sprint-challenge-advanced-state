@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER, SET_INFO_MESSAGE } from './action-types'
+import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE } from './action-types'
+import { SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER, SET_INFO_MESSAGE } from './action-types'
+import { INPUT_CHANGE, RESET_FORM } from './action-types'
 
 // ❗ You don't need to add extra action creators to achieve MVP
 export function moveClockwise(nextPosition) {
@@ -47,9 +49,20 @@ export function setQuiz(quiz) {
   }
 }
 
-export function inputChange() { }
+export function inputChange(target_id, target_value) { 
+  console.log(`action: inputChange triggered...`)
+  console.log(target_id, target_value)
+  return {
+    type: INPUT_CHANGE,
+    payload: { key: target_id, value: target_value}
+  }
+}
 
-export function resetForm() { }
+export function resetForm() { 
+  return {
+    type: RESET_FORM
+  }
+}
 
 // ❗ Async action creators
 export function fetchQuiz() {
