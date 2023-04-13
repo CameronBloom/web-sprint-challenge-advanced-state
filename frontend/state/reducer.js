@@ -39,8 +39,8 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
     // return updates
     switch(action.type) {
       case SET_SELECTED_ANSWER:
-        // console.log(`reducer: set_selected_answer triggered...`);
-        // console.log(`reducer: new answer is ${action.payload}`);
+        console.log(`reducer: set_selected_answer triggered...`);
+        console.log(`reducer: selected answer index is ${action.payload}`);
         return action.payload
       default:
         return state;
@@ -52,8 +52,8 @@ function infoMessage(state = initialMessageState, action) {
       // return updates
       switch(action.type) {
         case SET_INFO_MESSAGE:
-          // console.log(`reducer: set_info_message triggered...`);
-          // console.log(`reducer: new message is ${action.payload}`);
+          console.log(`reducer: set_info_message triggered...`);
+          console.log(`reducer: new message is ${action.payload}`);
           return action.payload
         default:
           return state;

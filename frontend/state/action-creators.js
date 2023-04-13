@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_QUIZ_INTO_STATE, SET_INFO_MESSAGE } from './action-types'
+import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE, SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER, SET_INFO_MESSAGE } from './action-types'
 
 // ❗ You don't need to add extra action creators to achieve MVP
 export function moveClockwise(nextPosition) {
@@ -20,15 +20,30 @@ export function moveCounterClockwise(nextPosition) {
   }
 }
 
-export function selectAnswer() { }
+export function selectAnswer(answer) { 
+  console.log(`action: select_answer triggered...`);
+  console.log(`action: answer index is ${answer}`);
+  return {
+    type: SET_SELECTED_ANSWER,
+    payload: answer
+  }
+}
 
-export function setMessage() { }
+export function setMessage(message) { 
+  console.log(`action: set_message triggered...`);
+  console.log(`action: new message is ${message}`);
+  return {
+    type: SET_INFO_MESSAGE, 
+    payload: message
+  }
+}
 
-export function setQuiz() { 
+export function setQuiz(quiz) { 
   console.log(`action: set_quiz triggered...`);
   console.log(`action: new quiz is...`);
   return {
-    type: SET_QUIZ_INTO_STATE
+    type: SET_QUIZ_INTO_STATE,
+    payload: quiz
   }
 }
 
@@ -42,11 +57,11 @@ export function fetchQuiz() {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
     // On successful GET:
     // - Dispatch an action to send the obtained quiz to its state
-    dispatch({ type: SET_QUIZ_INTO_STATE, payload: null });
-    dispatch({ type: SET_INFO_MESSAGE, payload: "Fetching Quiz"})
+    dispatch(setQuiz(null));
+    dispatch(setMessage("Fetching Quiz"))
     axios.get('http://localhost:9000/api/quiz/next')
-    .then(res => dispatch({ type: SET_QUIZ_INTO_STATE, payload: res.data }))
-    .then(res => dispatch({ type: SET_INFO_MESSAGE, payload: res.payload["question"]}));
+      .then(res => dispatch(setQuiz(res.data)))
+      .then(() => dispatch(setMessage("Fetching Complete")))
   }
 }
 

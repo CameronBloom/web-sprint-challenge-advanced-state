@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+
+// TODO:
+// =====
+// INITIAL QUIZ RENDERING
+// POST ANSWER
+
 
 // import the required actions
 import { selectAnswer, setQuiz, setMessage } from '../state/action-creators' // synchronous
@@ -18,35 +24,41 @@ function Quiz(props) {
   console.log(` === Quiz Props === `)
   console.log(props)
 
+  useEffect(() => {
+    props.fetchQuiz();
+  }, []);
+
   const handleFetchQuiz = e => {
     e.preventDefault();
-    // console.log(`component: handle_clockwise triggered...`)
-    // console.log(`component: curr value is ${props.wheel}`);
     props.fetchQuiz();
+  };
+  
+  const handleSelectAnswer = (index) => {
+    props.selectAnswer(index);
   };
 
   return (
     <div id="wrapper">
       {
         // quiz already in state? Let's use that, otherwise render "Loading next quiz..."
-        true ? (
+        props.quiz ? (
           <>
-            <h2>What is a closure?</h2>
+            <h2>{props.quiz["question"]}</h2>
+
 
             <div id="quizAnswers">
-              <div className="answer selected">
-                A function
-                <button>
-                  SELECTED
-                </button>
-              </div>
-
-              <div className="answer">
-                An elephant
-                <button>
-                  Select
-                </button>
-              </div>
+              {props.quiz["answers"].map((answer, idx) => {
+                return (
+                  <div 
+                    className={props.selectedAnswer === idx ? "answer selected" : "answer" } 
+                    key={idx} 
+                    onClick={ () => handleSelectAnswer(idx) }
+                  >
+                    { answer["text"] }
+                    { props.selectedAnswer === idx ? <button>SELECTED</button> : <button>Select</button>}
+                  </div>
+                )
+              })}
             </div>
 
             <button id="submitAnswerBtn">Submit answer</button>
