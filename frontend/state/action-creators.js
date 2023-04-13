@@ -1,7 +1,21 @@
-// ❗ You don't need to add extra action creators to achieve MVP
-export function moveClockwise() { }
+import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE } from './action-types'
 
-export function moveCounterClockwise() { }
+// ❗ You don't need to add extra action creators to achieve MVP
+export function moveClockwise(newPosition) {
+  console.log(`action: move_clockwise triggered...`);
+  console.log(`action: new value is ${newPosition}`)
+  return {
+    type: MOVE_CLOCKWISE,
+    payload: newPosition
+  }
+}
+
+export function moveCounterClockwise(newPosition) {
+  return {
+    type: MOVE_COUNTERCLOCKWISE,
+    payload: newPosition
+  }
+}
 
 export function selectAnswer() { }
 
