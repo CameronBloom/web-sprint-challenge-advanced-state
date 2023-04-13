@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-// TODO:
-// =====
-// INITIAL QUIZ RENDERING => SEEMS COMPLETE...
-// POST ANSWER...
-// CLEAN UP COMMENTS => SEEMS COMPLETE...
-
-
 // import the required actions
 import { selectAnswer, setQuiz, setMessage } from '../state/action-creators' // synchronous
 import { fetchQuiz, postAnswer } from '../state/action-creators' // asynchronous
