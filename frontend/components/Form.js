@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actionCreators from '../state/action-creators'
 
 // import the required actions
 import { inputChange, resetForm } from '../state/action-creators' // synchronous
@@ -25,7 +24,6 @@ const mapStateToProps = state => {
 export function Form(props) {
   console.log(`===== FORM PROPS =====`)
   console.log(props.form);
-  console.log(props.form["newQuestion"])
   console.log(`===== ========== =====`)
 
   const onChange = evt => {
