@@ -67,6 +67,7 @@ export function inputChange(target_id, target_value) {
 
 // incomplete
 export function resetForm() { 
+  console.log(`action: resetForm triggered...`)
   return {
     type: RESET_FORM
   }
@@ -109,11 +110,24 @@ export function postAnswer(quiz, answer) {
 }
 
 // incomplete
-export function postQuiz() {
+export function postQuiz(question_text, true_answer_text, false_answer_text) {
   return function (dispatch) {
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state
     // - Dispatch the resetting of the form
+
+    dispatch(selectAnswer(null))
+    axios.post("http://localhost:9000/api/quiz/new", { 
+      "question_text": question_text, 
+      "true_answer_text": true_answer_text, 
+      "false_answer_text": false_answer_text })
+      .then(res => console.log(res))
+      // .then(res => dispatch(setMessage(res.data.message)))
+
+
+    // - Example of payload: `{ "question_text": "Love JS?", "true_answer_text": "yes", "false_answer_text": "nah" }`
+    // - The response to a proper request includes `201 Created` and the newly created quiz object
+    // - A malformed client payload will result in a `422 Unprocessable Entity` response with a reason
   }
 }
 // ❗ On promise rejections, use log statements or breakpoints, and put an appropriate error message in state

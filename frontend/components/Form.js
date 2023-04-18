@@ -13,7 +13,7 @@ import { postQuiz } from '../state/action-creators' // asynchronous
 //
 // implement postQuiz
 // - success message
-// - failure message
+// - failure message (NO FAILURE MESSAGE???e)
 // - empty form (call reset)
 
 const mapStateToProps = state => {
@@ -23,10 +23,10 @@ const mapStateToProps = state => {
 }
 
 export function Form(props) {
-  // console.log(`===== FORM PROPS =====`)
-  // console.log(props.form);
-  // console.log(props.form["newQuestion"])
-  // console.log(`===== ========== =====`)
+  console.log(`===== FORM PROPS =====`)
+  console.log(props.form);
+  console.log(props.form["newQuestion"])
+  console.log(`===== ========== =====`)
 
   const onChange = evt => {
     const target_id = evt.target.id
@@ -35,12 +35,28 @@ export function Form(props) {
   }
 
   const onSubmit = evt => {
+    // prevent default state reset!
+    evt.preventDefault();
+  
+    // post quiz!
+    const newQuestionText = props.form.newQuestion;
+    const newTrueText = props.form.newTrueAnswer
+    const newFalseText = props.form.newFalseAnswer
+    props.postQuiz(newQuestionText, newTrueText, newFalseText);
 
+    // reset form!
+    props.resetForm();
 
   }
-  // newQuestion: '',
-  // newTrueAnswer: '',
-  // newFalseAnswer: '',
+
+  const handlePostQuiz = () => {
+    console.log(`quiz question: ${props.form.newQuestion}`);
+    console.log(`quiz true: ${props.form.newTrueAnswer}`);
+    console.log(`quiz false: ${props.form.newFalseAnswer}`);
+    // const quizId = props.quiz.quiz_id;
+    // const answerId = props.quiz.answers[props.selectedAnswer]["answer_id"];
+    // props.postAnswer(quizId, answerId);
+  }
 
   return (
     <form id="form" onSubmit={onSubmit}>
@@ -55,10 +71,11 @@ export function Form(props) {
           props.form["newTrueAnswer"].trim().length === 0 ||
           props.form["newFalseAnswer"].trim().length === 0  
         }
+        onClick={ () => handlePostQuiz() }
       >Submit new quiz</button>
     </form>
   )
 }
 
 // export default connect(st => st, actionCreators)(Form)
-export default connect(mapStateToProps, { inputChange })(Form)
+export default connect(mapStateToProps, { inputChange, resetForm, postQuiz })(Form)
