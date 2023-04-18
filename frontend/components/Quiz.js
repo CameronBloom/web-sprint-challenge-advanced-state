@@ -14,17 +14,18 @@ const mapStateToProps = state => {
 }
 
 function Quiz(props) {
-  // console.log(` === Quiz Props === `)
+  // console.log(` ===== Quiz Props ===== `)
   // console.log(props)
+  // console.log(` ===== ========== ===== `)
 
   useEffect(() => {
     props.fetchQuiz();
   }, []);
 
   const handlePostAnswer = () => {
-    console.log(`quiz id: ${props.quiz.quiz_id}`);
-    console.log(`answer id: ${props.quiz.answers[props.selectedAnswer]["answer_id"]}`);
-    console.log(`answer text: ${props.quiz.answers[props.selectedAnswer]["text"]}`);
+    // console.log(`quiz id: ${props.quiz.quiz_id}`);
+    // console.log(`answer id: ${props.quiz.answers[props.selectedAnswer]["answer_id"]}`);
+    // console.log(`answer text: ${props.quiz.answers[props.selectedAnswer]["text"]}`);
     const quizId = props.quiz.quiz_id;
     const answerId = props.quiz.answers[props.selectedAnswer]["answer_id"];
     props.postAnswer(quizId, answerId);
@@ -32,6 +33,7 @@ function Quiz(props) {
   
   const handleSelectAnswer = (index) => {
     props.selectAnswer(index);
+    
   };
 
   return (

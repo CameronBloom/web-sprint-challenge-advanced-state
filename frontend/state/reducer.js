@@ -73,7 +73,7 @@ const initialFormState = {
 function form(state = initialFormState, action) {
   switch(action.type) {
     case INPUT_CHANGE:
-      console.log(`reducer: input_change triggered...`)
+      // console.log(`reducer: input_change triggered...`)
       return { 
         ...state, 
         [action.payload["key"]]: action.payload["value"] 

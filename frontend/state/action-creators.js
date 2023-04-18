@@ -57,8 +57,8 @@ export function setQuiz(quiz) {
 
 // incomplete
 export function inputChange(target_id, target_value) { 
-  console.log(`action: inputChange triggered...`)
-  console.log(target_id, target_value)
+  // console.log(`action: inputChange triggered...`)
+  // console.log(target_id, target_value)
   return {
     type: INPUT_CHANGE,
     payload: { key: target_id, value: target_value}
@@ -77,6 +77,7 @@ export function resetForm() {
 
 // complete
 export function fetchQuiz() {
+  console.log(`action: fetchQuiz triggered...`)
   return function (dispatch) {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
     // On successful GET:
@@ -84,22 +85,18 @@ export function fetchQuiz() {
     
     axios.get('http://localhost:9000/api/quiz/next')
       .then(res => dispatch(setQuiz(res.data)))
-  
   }
 }
 
 // complete
 export function postAnswer(quiz, answer) {
+  console.log(`action: postAnwser triggered...`)
   return function (dispatch) {
     // On successful POST:
     // - Dispatch an action to reset the selected answer state
     // - Dispatch an action to set the server message to state
     // - Dispatch the fetching of the next quiz
 
-    // console.log(`quiz was passed!!! - ${quiz}`)
-    // console.log(`answer was passed!!! - ${answer}`)
-    // console.log({ "quiz_id": quiz, "answer_id": answer })
-    
     dispatch(selectAnswer(null))
     axios.post("http://localhost:9000/api/quiz/answer", { "quiz_id": quiz, "answer_id": answer })
       .then(res => dispatch(setMessage(res.data.message)))
@@ -111,22 +108,22 @@ export function postAnswer(quiz, answer) {
 
 // incomplete
 export function postQuiz(question_text, true_answer_text, false_answer_text) {
+  console.log(`action: postQuiz triggered...`)
   return function (dispatch) {
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state
     // - Dispatch the resetting of the form
 
-    dispatch(selectAnswer(null))
-    console.log({ 
-      "question_text": question_text, 
-      "true_answer_text": true_answer_text, 
-      "false_answer_text": false_answer_text })
     axios.post("http://localhost:9000/api/quiz/new", { 
       "question_text": question_text, 
       "true_answer_text": true_answer_text, 
       "false_answer_text": false_answer_text })
       // .then(res => console.log(res))
       .then(res => dispatch(setMessage(`Congrats: "${res.data.question}" is a great question!`)))
+      .catch(function (err) {
+        console.error(err);
+      })
+      .then(dispatch(resetForm()))
 
   }
 }

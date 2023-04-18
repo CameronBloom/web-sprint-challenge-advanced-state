@@ -12,8 +12,8 @@ const mapStateToProps = state => {
 }
 
 function Wheel(props) {
-  console.log(` === Wheel Props === `)
-  console.log(props);
+  // console.log(` === Wheel Props === `)
+  // console.log(props);
 
   const handleClockwise = e => {
     e.preventDefault();

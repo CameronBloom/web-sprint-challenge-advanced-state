@@ -5,16 +5,6 @@ import { connect } from 'react-redux'
 import { inputChange, resetForm } from '../state/action-creators' // synchronous
 import { postQuiz } from '../state/action-creators' // asynchronous
 
-// TODO
-// ====
-// implement resetForm
-// - empty form
-//
-// implement postQuiz
-// - success message
-// - failure message (NO FAILURE MESSAGE???e)
-// - empty form (call reset)
-
 const mapStateToProps = state => {
   return {
     form: state.form
@@ -22,9 +12,9 @@ const mapStateToProps = state => {
 }
 
 export function Form(props) {
-  console.log(`===== FORM PROPS =====`)
-  console.log(props.form);
-  console.log(`===== ========== =====`)
+  // console.log(`===== FORM PROPS =====`)
+  // console.log(props.form);
+  // console.log(`===== ========== =====`)
 
   const onChange = evt => {
     const target_id = evt.target.id
@@ -42,19 +32,13 @@ export function Form(props) {
     const newFalseText = props.form.newFalseAnswer
     props.postQuiz(newQuestionText, newTrueText, newFalseText);
 
-    // reset form!
-    props.resetForm();
-
   }
 
-  const handlePostQuiz = () => {
-    console.log(`quiz question: ${props.form.newQuestion}`);
-    console.log(`quiz true: ${props.form.newTrueAnswer}`);
-    console.log(`quiz false: ${props.form.newFalseAnswer}`);
-    // const quizId = props.quiz.quiz_id;
-    // const answerId = props.quiz.answers[props.selectedAnswer]["answer_id"];
-    // props.postAnswer(quizId, answerId);
-  }
+  // const handlePostQuiz = () => {
+  //   console.log(`quiz question: ${props.form.newQuestion}`);
+  //   console.log(`quiz true: ${props.form.newTrueAnswer}`);
+  //   console.log(`quiz false: ${props.form.newFalseAnswer}`);
+  // }
 
   return (
     <form id="form" onSubmit={onSubmit}>
@@ -69,7 +53,7 @@ export function Form(props) {
           props.form["newTrueAnswer"].trim().length === 0 ||
           props.form["newFalseAnswer"].trim().length === 0  
         }
-        onClick={ () => handlePostQuiz() }
+        // onClick={ () => handlePostQuiz() }
       >Submit new quiz</button>
     </form>
   )
