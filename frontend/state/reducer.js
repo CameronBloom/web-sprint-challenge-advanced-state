@@ -4,6 +4,7 @@ import { MOVE_CLOCKWISE, MOVE_COUNTERCLOCKWISE } from './action-types'
 import { SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER, SET_INFO_MESSAGE } from './action-types'
 import { INPUT_CHANGE, RESET_FORM } from './action-types'
 
+// complete
 const initialWheelState = 0
 function wheel(state = initialWheelState, action) {
   // return updates
@@ -21,6 +22,7 @@ function wheel(state = initialWheelState, action) {
   }
 }
 
+// complete
 const initialQuizState = null
 function quiz(state = initialQuizState, action) {
   // return updates
@@ -35,6 +37,7 @@ function quiz(state = initialQuizState, action) {
   }
 }
 
+// complete
 const initialSelectedAnswerState = null
 function selectedAnswer(state = initialSelectedAnswerState, action) {
     // return updates
@@ -48,6 +51,7 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
     }
 }
 
+// complete
 const initialMessageState = ''
 function infoMessage(state = initialMessageState, action) {
   // return updates

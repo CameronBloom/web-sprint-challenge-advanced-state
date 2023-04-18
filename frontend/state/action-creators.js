@@ -4,6 +4,8 @@ import { SET_QUIZ_INTO_STATE, SET_SELECTED_ANSWER, SET_INFO_MESSAGE } from './ac
 import { INPUT_CHANGE, RESET_FORM } from './action-types'
 
 // ❗ You don't need to add extra action creators to achieve MVP
+
+// complete
 export function moveClockwise(nextPosition) {
   // console.log(`action: move_clockwise triggered...`);
   // console.log(`action: new value is ${nextPosition}`);
@@ -13,6 +15,7 @@ export function moveClockwise(nextPosition) {
   }
 }
 
+// complete
 export function moveCounterClockwise(nextPosition) {
   // console.log(`action: move_counter_clockwise triggered...`);
   // console.log(`action: new value is ${nextPosition}`);
@@ -22,6 +25,7 @@ export function moveCounterClockwise(nextPosition) {
   }
 }
 
+// complete
 export function selectAnswer(answer) { 
   // console.log(`action: select_answer triggered...`);
   // console.log(`action: answer index is ${answer}`);
@@ -31,6 +35,7 @@ export function selectAnswer(answer) {
   }
 }
 
+// complete
 export function setMessage(message) { 
   // console.log(`action: set_message triggered...`);
   // console.log(`action: new message is ${message}`);
@@ -40,6 +45,7 @@ export function setMessage(message) {
   }
 }
 
+// complete
 export function setQuiz(quiz) { 
   // console.log(`action: set_quiz triggered...`);
   // console.log(`action: new quiz is...`);
@@ -49,6 +55,7 @@ export function setQuiz(quiz) {
   }
 }
 
+// incomplete
 export function inputChange(target_id, target_value) { 
   console.log(`action: inputChange triggered...`)
   console.log(target_id, target_value)
@@ -58,6 +65,7 @@ export function inputChange(target_id, target_value) {
   }
 }
 
+// incomplete
 export function resetForm() { 
   return {
     type: RESET_FORM
@@ -65,6 +73,8 @@ export function resetForm() {
 }
 
 // ❗ Async action creators
+
+// complete
 export function fetchQuiz() {
   return function (dispatch) {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
@@ -77,6 +87,7 @@ export function fetchQuiz() {
   }
 }
 
+// complete
 export function postAnswer(quiz, answer) {
   return function (dispatch) {
     // On successful POST:
@@ -97,6 +108,7 @@ export function postAnswer(quiz, answer) {
   }
 }
 
+// incomplete
 export function postQuiz() {
   return function (dispatch) {
     // On successful POST:
