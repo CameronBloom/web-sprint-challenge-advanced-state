@@ -67,7 +67,7 @@ export function inputChange(target_id, target_value) {
 
 // incomplete
 export function resetForm() { 
-  console.log(`action: resetForm triggered...`)
+  // console.log(`action: resetForm triggered...`)
   return {
     type: RESET_FORM
   }
@@ -77,7 +77,7 @@ export function resetForm() {
 
 // complete
 export function fetchQuiz() {
-  console.log(`action: fetchQuiz triggered...`)
+  // console.log(`action: fetchQuiz triggered...`)
   return function (dispatch) {
     // First, dispatch an action to reset the quiz state (so the "Loading next quiz..." message can display)
     // On successful GET:
@@ -90,7 +90,7 @@ export function fetchQuiz() {
 
 // complete
 export function postAnswer(quiz, answer) {
-  console.log(`action: postAnwser triggered...`)
+  // console.log(`action: postAnwser triggered...`)
   return function (dispatch) {
     // On successful POST:
     // - Dispatch an action to reset the selected answer state
@@ -108,7 +108,7 @@ export function postAnswer(quiz, answer) {
 
 // incomplete
 export function postQuiz(question_text, true_answer_text, false_answer_text) {
-  console.log(`action: postQuiz triggered...`)
+  // console.log(`action: postQuiz triggered...`)
   return function (dispatch) {
     // On successful POST:
     // - Dispatch the correct message to the the appropriate state

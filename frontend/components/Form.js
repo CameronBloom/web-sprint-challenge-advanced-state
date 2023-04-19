@@ -27,9 +27,13 @@ export function Form(props) {
     evt.preventDefault();
   
     // post quiz!
-    const newQuestionText = props.form.newQuestion;
-    const newTrueText = props.form.newTrueAnswer
-    const newFalseText = props.form.newFalseAnswer
+    const newQuestionText = props.form.newQuestion.trim();
+    const newTrueText = props.form.newTrueAnswer.trim();
+    const newFalseText = props.form.newFalseAnswer.trim();
+    console.log(`=============== FORM TEST ===============`)
+    console.log(newQuestionText);
+    console.log(newTrueText);
+    console.log(newFalseText);
     props.postQuiz(newQuestionText, newTrueText, newFalseText);
 
   }

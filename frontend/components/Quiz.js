@@ -33,7 +33,7 @@ function Quiz(props) {
   
   const handleSelectAnswer = (index) => {
     props.selectAnswer(index);
-    
+    props.setMessage("");
   };
 
   return (

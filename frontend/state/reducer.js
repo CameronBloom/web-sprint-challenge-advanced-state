@@ -46,6 +46,11 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
         // console.log(`reducer: set_selected_answer triggered...`);
         // console.log(`reducer: selected answer index is ${action.payload}`);
         return action.payload
+        // return {
+        //   ...state,
+        //   selectedAnswer: action.payload,
+        //   infoMessage: '',
+        // }
       default:
         return state;
     }
@@ -79,7 +84,7 @@ function form(state = initialFormState, action) {
         [action.payload["key"]]: action.payload["value"] 
       };
     case RESET_FORM:
-      console.log(`reducer: reset_form triggered...`)
+      // console.log(`reducer: reset_form triggered...`)
       return {
         ...state,
         newQuestion: '',
