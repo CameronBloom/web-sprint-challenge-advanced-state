@@ -19,7 +19,7 @@ function Quiz(props) {
   // console.log(` ===== ========== ===== `)
 
   useEffect(() => {
-    props.fetchQuiz();
+    { !props.quiz ? props.fetchQuiz() : console.log(props) }
   }, []);
 
   const handlePostAnswer = () => {

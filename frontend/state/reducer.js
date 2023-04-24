@@ -43,14 +43,7 @@ function selectedAnswer(state = initialSelectedAnswerState, action) {
     // return updates
     switch(action.type) {
       case SET_SELECTED_ANSWER:
-        // console.log(`reducer: set_selected_answer triggered...`);
-        // console.log(`reducer: selected answer index is ${action.payload}`);
         return action.payload
-        // return {
-        //   ...state,
-        //   selectedAnswer: action.payload,
-        //   infoMessage: '',
-        // }
       default:
         return state;
     }
